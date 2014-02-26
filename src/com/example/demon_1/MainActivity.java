@@ -2,6 +2,7 @@ package com.example.demon_1;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -47,9 +48,20 @@ public class MainActivity extends Activity {
 					//Toast.LENGTH_SHORT).show();
 			EditText searchQuery = (EditText)findViewById(R.id.editTextSearchQuery);
 			String searchQueryText = searchQuery.getText().toString();
-			Intent intent = new Intent(getApplicationContext(),
-					                   ShowSearchQueryActivity.class);
-			intent.putExtra(ShowSearchQueryActivity.QUERY, searchQueryText);
+			String url = "https://www.google.com/?q=" + searchQueryText +
+					     "#q=" + searchQueryText;
+			Intent intent = null;
+			
+			if(v.getId() == btnOpenActivity.getId()){
+				intent = new Intent(getApplicationContext(),
+						ShowSearchQueryActivity.class);
+				intent.putExtra(ShowSearchQueryActivity.QUERY, searchQueryText);	
+			
+			}else if (v.getId() == btnSearch.getId()){
+				intent = new Intent(Intent.ACTION_VIEW);
+				intent.setData(Uri.parse(url));
+			}
+			
 			startActivity(intent);
 			
 			
