@@ -7,5 +7,6 @@
     <string name="btn_search">Buscar</string>
     <string name="btn_open_activity">Abrir Actividad</string>
     <string name="title_activity_show_search_query">ShowSearchQueryActivity</string>
+    <string name="hello_word">Ejemplo</string>
 
 </resources>
