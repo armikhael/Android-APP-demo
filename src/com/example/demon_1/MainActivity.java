@@ -10,9 +10,15 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.RadioGroup;
+import android.widget.RatingBar;
+import android.widget.ScrollView;
 import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import android.widget.Spinner;
 import android.widget.Toast;
 import android.widget.ViewSwitcher.ViewFactory;
 
@@ -20,7 +26,7 @@ public class MainActivity extends Activity {
 	
 	Button btnSearch;
 	Button btnOpenActivity;
-	LinearLayout inputControls;
+	ScrollView inputControls;
 	public static final String TAG = MainActivity.class.toString();
 	
 	@Override
@@ -42,7 +48,7 @@ public class MainActivity extends Activity {
 		
 		LinearLayout mainContent = (LinearLayout)findViewById(R.id.mainContent);
 		
-		inputControls = (LinearLayout) View.inflate(this, 
+		inputControls = (ScrollView) View.inflate(this, 
 																 R.layout.input_controls_content, 
 																 null);
 		mainContent.addView(btnlist);
@@ -52,8 +58,30 @@ public class MainActivity extends Activity {
 	
 	public void setInputControls(){
 		SeekBar seekbar = (SeekBar) inputControls.findViewById(R.id.seekBar1);
+		RatingBar ratingbar = (RatingBar) inputControls.findViewById(R.id.ratingBar1);
+		Spinner spinner = (Spinner) inputControls.findViewById(R.id.spinner1);
+		CheckBox checkbox = (CheckBox) inputControls.findViewById(R.id.checkBox1);
+		RadioGroup radiogroup = (RadioGroup) inputControls.findViewById(R.id.radioGroup1); 
+		
 		seekbar.setMax(10);
 		seekbar.setProgress(5);
+		seekbar.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
+			
+			public void onStopTrackingTouch(SeekBar seekBar) {
+				// TODO Auto-generated method stub		
+			}
+			
+			public void onStartTrackingTouch(SeekBar seekBar) {
+				// TODO Auto-generated method stub	
+			}
+			
+			public void onProgressChanged(SeekBar seekBar, int progress,
+					boolean fromUser) {
+				// TODO Auto-generated method stub
+				Toast.makeText(getApplicationContext(), 
+							   "Cambio a " + progress, Toast.LENGTH_SHORT).show();
+			}
+		});
 	}
 
 	@Override
