@@ -6,7 +6,12 @@
     <string name="hello_world">Hola Android!</string>
     <string name="btn_search">Buscar</string>
     <string name="btn_open_activity">Abrir Actividad</string>
+    <string name="btn_list">Listado</string>
     <string name="title_activity_show_search_query">ShowSearchQueryActivity</string>
-    <string name="hello_word">Ejemplo</string>
+    <string name="hello_word">hola mundo</string>
+    <string name="text_checkbox">¿te gusta Android?</string>
+    <string name="text_radio_button_0">Opción A</string>
+    <string name="text_radio_button_1">Opción B</string>
+    <string name="text_radio_button_2">Opción C</string>
 
 </resources>
