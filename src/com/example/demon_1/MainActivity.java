@@ -1,5 +1,8 @@
 package com.example.demon_1;
 
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
@@ -9,16 +12,21 @@ import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
+
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.RatingBar;
 import android.widget.ScrollView;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewSwitcher.ViewFactory;
 
@@ -28,6 +36,7 @@ public class MainActivity extends Activity {
 	Button btnOpenActivity;
 	ScrollView inputControls;
 	public static final String TAG = MainActivity.class.toString();
+	private static final String[] TextViewResourceId = null;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +70,44 @@ public class MainActivity extends Activity {
 		RatingBar ratingbar = (RatingBar) inputControls.findViewById(R.id.ratingBar1);
 		Spinner spinner = (Spinner) inputControls.findViewById(R.id.spinner1);
 		CheckBox checkbox = (CheckBox) inputControls.findViewById(R.id.checkBox1);
-		RadioGroup radiogroup = (RadioGroup) inputControls.findViewById(R.id.radioGroup1); 
+		RadioGroup radioGroup = (RadioGroup) inputControls.findViewById(R.id.radioGroup1);
+		
+		OnCheckedChangeListener checkedChangeListener = new OnCheckedChangeListener() {
+			
+			@Override
+			public void onCheckedChanged(RadioGroup group, int checkedId) {
+				// TODO Auto-generated method stub
+				String option = "";
+				switch (checkedId) {
+				case R.id.radioButton1:
+					option = "A";
+					break;
+				case R.id.radioButton2:
+					option = "B";
+					break;
+				case R.id.radioButton3:
+					option = "C";
+					break;
+				}
+				Log.e(TAG, "Select " + option);
+			}
+		};
+		
+		radioGroup.setOnCheckedChangeListener(checkedChangeListener);
+				
+		checkbox.setChecked(true);
+		
+		ArrayList<String> names = new ArrayList<String>();
+			names.add("Hugo");
+			names.add("Luis");
+			names.add("Carlos");
+		ArrayAdapter<String> namesAdapter = new ArrayAdapter<String>(this,
+																	 android.R.layout.simple_spinner_item,
+																	 names);
+		spinner.setAdapter(namesAdapter);
+		
+		
+		ratingbar.setRating((float)1.5);
 		
 		seekbar.setMax(10);
 		seekbar.setProgress(5);

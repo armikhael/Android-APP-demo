@@ -13,8 +13,9 @@
 	        android:layout_width="match_parent"
 	        android:layout_height="wrap_content"
 	        android:ems="10"
-	        android:inputType="textMultiLine">
-	        <requestFocus />   
+	        android:inputType="textMultiLine" >
+	        
+	       <requestFocus />   
 	    </EditText>  
 	        
 	    <SeekBar
@@ -24,6 +25,7 @@
 	
 	    <RatingBar
 	        android:id="@+id/ratingBar1"
+	        android:rating="5"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content" />
 	
